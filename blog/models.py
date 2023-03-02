@@ -6,5 +6,5 @@ class BUser(AbstractUser):
     is_activated = models.BooleanField(default=True, db_index=True, verbose_name='Прошёл активацию?')
 
 
-    class Meta(AbstractUser):
+    class Meta(AbstractUser.Meta):
         pass
