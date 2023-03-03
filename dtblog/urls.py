@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from blog.views import index, BLoginView, profile
+from blog.views import index, BLoginView, profile, BLogoutView
 
 
 urlpatterns = [

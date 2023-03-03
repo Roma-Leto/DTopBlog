@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.decorators import
-from django.contrib.auth.mixin import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def index(request):

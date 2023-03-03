@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -8,3 +9,13 @@ class BUser(AbstractUser):
 
     class Meta(AbstractUser.Meta):
         pass
+
+
+class BNotePost(models.Model):
+    data_publish = models.DateField(auto_now_add=True, verbose_name="Дата")
+    title = models.CharField(max_length=50, blank=False)
+    article = models.CharField(max_length=200)
+    start_task = models.DateField(verbose_name="начало")
+    fin_task = models.DateField(verbose_name="окончание")
+    user_post = models.ForeignKey('BUser', on_delete=models.CASCADE) 
+
