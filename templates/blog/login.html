@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang=ru>
+	<meta charset="UTF-8">
+	<link type="text/css" rel="stylesheet" href="{% static 'base.css' %}">
+	<title>IndexPage></title>
+</html>
+<body>
+	{% if user.is_authenticated %}
+		<h1>This login page. Login True</h1>
+	{% else %}
+		<h1>This login page. Login False</h1>
+	{% endif %}
+</body>
+</html>
