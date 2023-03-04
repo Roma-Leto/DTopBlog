@@ -19,3 +19,8 @@ class BNotePost(models.Model):
     fin_task = models.DateField(verbose_name="окончание")
     user_post = models.ForeignKey('BUser', on_delete=models.CASCADE) 
 
+    class Meta:
+        verbose_name_plural = 'Рубрики'
+        verbose_name = 'Рубрика'
+        ordering = ['data_publish']
+
