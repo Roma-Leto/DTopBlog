@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang=ru>
+	<meta charset="UTF-8">
+	<link type="text/css" rel="stylesheet" href="{% static 'base.css' %}">
+	<title>IndexPage></title>
+</html>
+<body>
+	<h1>Add task</h1>
+	<form method="post">
+		{% csrf_token %}
+		{{ form }}
+		<input type="submit" value="Add">
+	</form>
+</body>
+</html>
