@@ -5,5 +5,8 @@ from .models import BNotePost
 class TaskForm(ModelForm):
     class Meta:
         model = BNotePost
-        fields = "__all__"
+        fields = [
+                'title',
+                'article',
+            ]
 
