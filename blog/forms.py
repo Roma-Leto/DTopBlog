@@ -8,5 +8,6 @@ class TaskForm(ModelForm):
         fields = [
                 'title',
                 'article',
-            ]
+                'user_post',
+                ]
 

@@ -6,7 +6,7 @@ from django.views.generic.edit import FormView, CreateView
 from django.urls import reverse_lazy
 
 from .forms import TaskForm
-from .models import BNotePost
+from .models import BNotePost, BUser
 
 
 def index(request):
@@ -24,6 +24,7 @@ class BLoginView(LoginView):
 def profile(request):
     btask = BNotePost.objects.all()
     extra_context = {"note": btask}
+    print(extra_context)
     return render(request, 'blog/profile.html', extra_context)
 
 
@@ -35,8 +36,11 @@ class TaskFormView(CreateView):
     template_name = 'blog/create.html'
     form_class = TaskForm
     success_url =reverse_lazy('profile')
-        
-    #def form_valid(self, form):
-     #   form.save()
-      #  return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print("--------------", context)
+        context['user_post'] = BUser.objects.all()
+        print("++++++++++++++", context['user_post'])
+        return context
 
