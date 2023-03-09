@@ -18,7 +18,7 @@ class BNotePost(models.Model):
     article = models.CharField(max_length=200)
     #start_task = models.DateField(null=True, blank=True, auto_now=True,editable=True, verbose_name="начало")
     #fin_task = models.DateField(blank=True, null=True, verbose_name="окончание")
-    user_post = models.ForeignKey(BUser, related_name='pk', on_delete=models.CASCADE) 
+    user_post = models.ForeignKey(BUser, on_delete=models.CASCADE) 
     
 
     class Meta:

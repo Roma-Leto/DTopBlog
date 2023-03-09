@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-from blog.views import index, BLoginView, profile, BLogoutView, TaskFormView
+from blog.views import index, BLoginView, profile, BLogoutView, user_task_add
 
 urlpatterns = [
-	path('accounts/create/', TaskFormView.as_view(), name='create'),
+        path('accounts/create/', user_task_add, name='create'),
         path('accounts/logout', BLogoutView.as_view(), name='logout'),
         path('accounts/profile/', profile, name='profile'),
         path('accounts/login/', BLoginView.as_view(), name='login'),
