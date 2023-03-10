@@ -35,20 +35,25 @@ class BLogoutView(LoginRequiredMixin, LogoutView):
 
 @login_required
 def user_task_add(request):
-    request.user_post_id=request.user.pk
-    print("---REQUEST---", request.method)
-    if request.method != 'GET':
+    request.user_post=request.user.pk
+    #print("---REQUEST---", request.method, 'user_id=', request.user_post)
+    if request.method == 'POST':
         form = TaskForm(request.POST)
-        print("---FORM---", form)
+        #print("---FORM---", form)
         if form.is_valid():
+            #form = TaskForm(initial={'user_post': request.user.pk})
+            #user_post_id=request.user.pk
+            #print('--- PRINT VALID ---', form, request.body)
             task = form.save()
-            if formset.is_valid():
-               formset.save()
-               messages.add_message(request, messages.SUCCESS,
-                                     'Задача добавлена')
-               return redirect('profile')
+            print('--- TASK ---', task)
+            return redirect('index')
     else:
-        form = TaskForm(initial={'user_post_id': request.user.pk})
-    context = {'form': form}
-    return render(request, 'blog/create.html', context)
+        #form = TaskForm()
+        form = TaskForm(initial={'user_post': request.user.pk})
+        #print('---form initial---', form)
+        context = {'form': form}
+        #print('---request---', context)
+        return render(request, 'blog/create.html', context)
+    return render(request, 'blog/create.html', {'form': form})
+
 

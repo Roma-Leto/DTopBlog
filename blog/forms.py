@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 class TaskForm(ModelForm):
     class Meta:
         model = BNotePost
-        fields = [
+        fields = (
                 'title',
                 'article',
                 'user_post',
-                ]
+            )
