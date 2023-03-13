@@ -7,6 +7,8 @@
 </html>
 <body>
 	<h1>Profile page {{ user.username }}</h1>
-	{{ note.id }} {{ note.title }}
+	{% for n in note %}
+	<p>{{ n.id }} {{ n.title }} {{ n.data_publish  }} {{ n.user_post  }}</p>
+	{% endfor  %}
 </body>
 </html>

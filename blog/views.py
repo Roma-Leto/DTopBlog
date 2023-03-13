@@ -3,11 +3,12 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormView, CreateView
+from django.views.generic.base import TemplateView
 from django.urls import reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .forms import TaskForm
-from .models import BNotePost, BUser
+
+from .forms import RegisterUserForm
 
 
 def index(request):
@@ -25,7 +26,6 @@ class BLoginView(LoginView):
 def profile(request):
     btask = BNotePost.objects.all()
     extra_context = {"note": btask}
-    print(extra_context)
     return render(request, 'blog/profile.html', extra_context)
 
 
@@ -56,4 +56,14 @@ def user_task_add(request):
         return render(request, 'blog/create.html', context)
     return render(request, 'blog/create.html', {'form': form})
 
+
+class RegisterUserView(CreateView):
+    model = BUser
+    template_name = 'blog/register_user.html'
+    form_class = RegisterUserForm
+    success_url = reverse_lazy('blog:register_done')
+
+
+class RegisterDoneView(TemplateView):
+    tamplate_name = 'blog/index.html'
 
